@@ -17,27 +17,47 @@ npm install @etiennedo/shipstation-sdk
 Before using the SDK, configure it with your API key:
 
 ```typescript
-import { OpenAPI, LabelsService } from '@etiennedo/shipstation-sdk';
+import { config } from 'dotenv';
+import { OpenAPI } from '@etiennedo/shipstation-sdk';
+
+config();
+
+// Verify the API key is loaded correctly
+if (!process.env.SS_API_KEY) {
+    console.error('Error: SS_API_KEY environment variable is not set.');
+    process.exit(1);
+}
 
 // Set your API key
-OpenAPI.TOKEN = 'your-api-key-here';
-
-// Use the SDK services
-LabelsService.listLabels().then((labels) => {
-    console.log(labels);
-});
+OpenAPI.HEADERS = { 'API-Key': process.env.SS_API_KEY };
 ```
 
-### Example
+### Example: Fetching Shipments
 
-Import the SDK and use its services:
+Use the `ShipmentsService` to fetch shipments with pagination and sorting:
 
 ```typescript
-import { LabelsService } from '@etiennedo/shipstation-sdk';
+import { ShipmentsService } from '@etiennedo/shipstation-sdk';
+import { sort_dir } from '@etiennedo/shipstation-sdk/models/sort_dir';
+import { shipments_sort_by } from '@etiennedo/shipstation-sdk/models/shipments_sort_by';
 
-LabelsService.listLabels().then((labels) => {
-    console.log(labels);
-});
+async function fetchShipments() {
+    try {
+        const response = await ShipmentsService.listShipments({
+            sortBy: shipments_sort_by.CREATED_AT,
+            sortDir: sort_dir.DESC,
+        });
+
+        console.log(`Fetched ${response.shipments.length} shipments:`);
+        response.shipments.forEach((shipment, index) => {
+            console.log(`${index + 1}. Shipment ID: ${shipment.shipment_id}, Status: ${shipment.shipment_status}`);
+        });
+    } catch (error) {
+        console.error('Error fetching shipments:', error);
+    }
+}
+
+fetchShipments();
 ```
 
 ## Development
