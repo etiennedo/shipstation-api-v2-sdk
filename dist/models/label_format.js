@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.label_format = void 0;
+/* generated using openapi-typescript-codegen -- do not edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+/**
+ * The possible file formats in which shipping labels can be downloaded.  We recommend `pdf` format because it is supported by all carriers, whereas some carriers do not support the `png` or `zpl` formats.
+ *
+ * |Label Format  | Supported Carriers
+ * |--------------|-----------------------------------
+ * |`pdf`         | All carriers
+ * |`png`         | `fedex` <br> `stamps_com` <br> `ups` <br> `usps`
+ * |`zpl`         | `access_worldwide` <br> `apc` <br> `asendia` <br> `dhl_global_mail` <br> `dhl_express` <br> `dhl_express_australia` <br> `dhl_express_canada` <br> `dhl_express_worldwide` <br> `dhl_express_uk` <br> `dpd` <br> `endicia` <br> `fedex` <br> `fedex_uk` <br> `firstmile` <br> `imex` <br> `newgistics` <br> `ontrac` <br> `rr_donnelley` <br> `stamps_com` <br> `ups` <br> `usps`
+ *
+ */
+var label_format;
+(function (label_format) {
+    label_format["PDF"] = "pdf";
+    label_format["PNG"] = "png";
+    label_format["ZPL"] = "zpl";
+})(label_format || (exports.label_format = label_format = {}));

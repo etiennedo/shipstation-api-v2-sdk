@@ -1,0 +1,13 @@
+/**
+ * Controls the sort order of queries
+ *
+ * |Value     |Description
+ * |:---------|:-----------------------------------------------------
+ * |`asc`     |Return results in ascending order
+ * |`desc`    |Return results in descending order
+ *
+ */
+export declare enum sort_dir {
+    ASC = "asc",
+    DESC = "desc"
+}
