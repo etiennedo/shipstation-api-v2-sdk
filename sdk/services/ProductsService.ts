@@ -16,13 +16,13 @@ export class ProductsService {
      * @returns any List of products
      * @throws ApiError
      */
-    public static listProducts(
-        sku?: string,
-        name?: string,
-        active?: boolean,
-        pageSize: number = 100,
-        page: number = 1,
-    ): CancelablePromise<{
+    public static listProducts(params: {
+        sku?: string;
+        name?: string;
+        active?: boolean;
+        pageSize?: number;
+        page?: number;
+    }): CancelablePromise<{
         products?: Array<{
             /**
              * Unique identifier for the product
@@ -250,11 +250,11 @@ export class ProductsService {
             method: 'GET',
             url: '/v2/products',
             query: {
-                'sku': sku,
-                'name': name,
-                'active': active,
-                'page_size': pageSize,
-                'page': page,
+                'sku': params.sku,
+                'name': params.name,
+                'active': params.active,
+                'page_size': params.pageSize,
+                'page': params.page,
             },
             errors: {
                 400: `The request contained errors.`,

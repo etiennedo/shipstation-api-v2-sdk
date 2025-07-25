@@ -28,30 +28,30 @@ export class ManifestsService {
      * @returns list_manifests_response_body The request was a success.
      * @throws ApiError
      */
-    public static listManifests(
-        warehouseId?: se_id,
-        shipDateStart?: string,
-        shipDateEnd?: string,
-        createdAtStart?: string,
-        createdAtEnd?: string,
-        carrierId?: se_id,
-        page: number = 1,
-        pageSize: number = 25,
-        labelIds?: Array<se_id>,
-    ): CancelablePromise<list_manifests_response_body> {
+    public static listManifests(params: {
+        warehouseId?: se_id;
+        shipDateStart?: string;
+        shipDateEnd?: string;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        carrierId?: se_id;
+        page?: number;
+        pageSize?: number;
+        labelIds?: Array<se_id>;
+    }): CancelablePromise<list_manifests_response_body> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v2/manifests',
             query: {
-                'warehouse_id': warehouseId,
-                'ship_date_start': shipDateStart,
-                'ship_date_end': shipDateEnd,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'carrier_id': carrierId,
-                'page': page,
-                'page_size': pageSize,
-                'label_ids': labelIds,
+                'warehouse_id': params.warehouseId,
+                'ship_date_start': params.shipDateStart,
+                'ship_date_end': params.shipDateEnd,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'carrier_id': params.carrierId,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'label_ids': params.labelIds,
             },
             errors: {
                 400: `The request contained errors.`,

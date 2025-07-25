@@ -45,50 +45,50 @@ export class ShipmentsService {
      * @returns list_shipments_response_body The request was a success.
      * @throws ApiError
      */
-    public static listShipments(
-        pickupId: pickup_resource_id,
-        shipmentStatus?: shipment_status,
-        batchId?: se_id,
-        createdAtStart?: string,
-        createdAtEnd?: string,
-        modifiedAtStart?: string,
-        modifiedAtEnd?: string,
-        page: number = 1,
-        pageSize: number = 25,
-        salesOrderId?: string,
-        sortDir?: sort_dir,
-        shipmentNumber?: string,
-        shipToName?: string,
-        itemKeyword?: string,
-        paymentDateStart?: string,
-        paymentDateEnd?: string,
-        storeId?: se_id,
-        externalShipmentId?: string,
-        sortBy?: shipments_sort_by,
-    ): CancelablePromise<list_shipments_response_body> {
+    public static listShipments(params: {
+        pickupId?: pickup_resource_id;
+        shipmentStatus?: shipment_status;
+        batchId?: se_id;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        modifiedAtStart?: string;
+        modifiedAtEnd?: string;
+        page?: number;
+        pageSize?: number;
+        salesOrderId?: string;
+        sortDir?: sort_dir;
+        shipmentNumber?: string;
+        shipToName?: string;
+        itemKeyword?: string;
+        paymentDateStart?: string;
+        paymentDateEnd?: string;
+        storeId?: se_id;
+        externalShipmentId?: string;
+        sortBy?: shipments_sort_by;
+    }): CancelablePromise<list_shipments_response_body> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v2/shipments',
             query: {
-                'shipment_status': shipmentStatus,
-                'batch_id': batchId,
-                'pickup_id': pickupId,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'modified_at_start': modifiedAtStart,
-                'modified_at_end': modifiedAtEnd,
-                'page': page,
-                'page_size': pageSize,
-                'sales_order_id': salesOrderId,
-                'sort_dir': sortDir,
-                'shipment_number': shipmentNumber,
-                'ship_to_name': shipToName,
-                'item_keyword': itemKeyword,
-                'payment_date_start': paymentDateStart,
-                'payment_date_end': paymentDateEnd,
-                'store_id': storeId,
-                'external_shipment_id': externalShipmentId,
-                'sort_by': sortBy,
+                'pickup_id': params.pickupId,
+                'shipment_status': params.shipmentStatus,
+                'batch_id': params.batchId,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'modified_at_start': params.modifiedAtStart,
+                'modified_at_end': params.modifiedAtEnd,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'sales_order_id': params.salesOrderId,
+                'sort_dir': params.sortDir,
+                'shipment_number': params.shipmentNumber,
+                'ship_to_name': params.shipToName,
+                'item_keyword': params.itemKeyword,
+                'payment_date_start': params.paymentDateStart,
+                'payment_date_end': params.paymentDateEnd,
+                'store_id': params.storeId,
+                'external_shipment_id': params.externalShipmentId,
+                'sort_by': params.sortBy,
             },
             errors: {
                 400: `The request contained errors.`,

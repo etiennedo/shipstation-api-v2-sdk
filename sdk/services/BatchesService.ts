@@ -32,24 +32,24 @@ export class BatchesService {
      * @returns ListBatchesResponseBody The request was a success.
      * @throws ApiError
      */
-    public static listBatches(
-        status?: batch_status,
-        page: number = 1,
-        pageSize: number = 25,
-        sortDir?: sort_dir,
-        batchNumber?: string,
-        sortBy?: batches_sort_by,
-    ): CancelablePromise<ListBatchesResponseBody> {
+    public static listBatches(params: {
+        status?: batch_status;
+        page?: number;
+        pageSize?: number;
+        sortDir?: sort_dir;
+        batchNumber?: string;
+        sortBy?: batches_sort_by;
+    }): CancelablePromise<ListBatchesResponseBody> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v2/batches',
             query: {
-                'status': status,
-                'page': page,
-                'page_size': pageSize,
-                'sort_dir': sortDir,
-                'batch_number': batchNumber,
-                'sort_by': sortBy,
+                'status': params.status,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'sort_dir': params.sortDir,
+                'batch_number': params.batchNumber,
+                'sort_by': params.sortBy,
             },
             errors: {
                 404: `The specified resource does not exist.`,

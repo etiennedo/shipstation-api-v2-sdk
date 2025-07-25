@@ -28,23 +28,25 @@ export class PackagePickupsService {
      * @throws ApiError
      */
     public static listScheduledPickups(
-        carrierId?: se_id,
-        warehouseId?: se_id,
-        createdAtStart?: string,
-        createdAtEnd?: string,
-        page: number = 1,
-        pageSize: number = 25,
+        params: {
+            carrierId?: se_id;
+            warehouseId?: se_id;
+            createdAtStart?: string;
+            createdAtEnd?: string;
+            page?: number;
+            pageSize?: number;
+        } = {},
     ): CancelablePromise<(list_pickup_response_body & error_response_body)> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v2/pickups',
             query: {
-                'carrier_id': carrierId,
-                'warehouse_id': warehouseId,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'page': page,
-                'page_size': pageSize,
+                'carrier_id': params.carrierId,
+                'warehouse_id': params.warehouseId,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'page': params.page,
+                'page_size': params.pageSize,
             },
             errors: {
                 400: `The request contained errors.`,

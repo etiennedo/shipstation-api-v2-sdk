@@ -48,40 +48,40 @@ export class LabelsService {
      *
      * @throws ApiError
      */
-    public static listLabels(
-        labelStatus?: label_status,
-        serviceCode?: service_code,
-        carrierId?: se_id,
-        trackingNumber?: string,
-        batchId?: se_id,
-        rateId?: se_id,
-        shipmentId?: se_id,
-        warehouseId?: se_id,
-        createdAtStart?: string,
-        createdAtEnd?: string,
-        page: number = 1,
-        pageSize: number = 25,
-        sortDir?: sort_dir,
-        sortBy: 'modified_at' | 'created_at' = 'created_at',
-    ): CancelablePromise<list_labels_response_body> {
+    public static listLabels(params: {
+        labelStatus?: label_status;
+        serviceCode?: service_code;
+        carrierId?: se_id;
+        trackingNumber?: string;
+        batchId?: se_id;
+        rateId?: se_id;
+        shipmentId?: se_id;
+        warehouseId?: se_id;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        page?: number;
+        pageSize?: number;
+        sortDir?: sort_dir;
+        sortBy?: 'modified_at' | 'created_at';
+    }): CancelablePromise<list_labels_response_body> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/v2/labels',
             query: {
-                'label_status': labelStatus,
-                'service_code': serviceCode,
-                'carrier_id': carrierId,
-                'tracking_number': trackingNumber,
-                'batch_id': batchId,
-                'rate_id': rateId,
-                'shipment_id': shipmentId,
-                'warehouse_id': warehouseId,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'page': page,
-                'page_size': pageSize,
-                'sort_dir': sortDir,
-                'sort_by': sortBy,
+                'label_status': params.labelStatus,
+                'service_code': params.serviceCode,
+                'carrier_id': params.carrierId,
+                'tracking_number': params.trackingNumber,
+                'batch_id': params.batchId,
+                'rate_id': params.rateId,
+                'shipment_id': params.shipmentId,
+                'warehouse_id': params.warehouseId,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'sort_dir': params.sortDir,
+                'sort_by': params.sortBy,
             },
             errors: {
                 400: `The request contained errors.`,

@@ -16,13 +16,13 @@ export class InventoryService {
      * @returns any Inventory levels for SKUs
      * @throws ApiError
      */
-    public static getInventoryLevels(
-        sku?: string,
-        inventoryWarehouseId?: string,
-        inventoryLocationId?: string,
-        groupBy?: 'warehouse' | 'location',
-        limit?: number,
-    ): CancelablePromise<{
+    public static getInventoryLevels(params: {
+        sku?: string;
+        inventoryWarehouseId?: string;
+        inventoryLocationId?: string;
+        groupBy?: 'warehouse' | 'location';
+        limit?: number;
+    }): CancelablePromise<{
         inventory?: Array<{
             sku?: string;
             on_hand?: number;
@@ -57,11 +57,11 @@ export class InventoryService {
             method: 'GET',
             url: '/v2/inventory',
             query: {
-                'sku': sku,
-                'inventory_warehouse_id': inventoryWarehouseId,
-                'inventory_location_id': inventoryLocationId,
-                'group_by': groupBy,
-                'limit': limit,
+                'sku': params.sku,
+                'inventory_warehouse_id': params.inventoryWarehouseId,
+                'inventory_location_id': params.inventoryLocationId,
+                'group_by': params.groupBy,
+                'limit': params.limit,
             },
         });
     }
