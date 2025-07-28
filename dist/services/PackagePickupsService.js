@@ -17,17 +17,17 @@ class PackagePickupsService {
      * @returns any The request was a success.
      * @throws ApiError
      */
-    static listScheduledPickups(carrierId, warehouseId, createdAtStart, createdAtEnd, page = 1, pageSize = 25) {
+    static listScheduledPickups(params = {}) {
         return (0, request_1.request)(OpenAPI_1.OpenAPI, {
             method: 'GET',
             url: '/v2/pickups',
             query: {
-                'carrier_id': carrierId,
-                'warehouse_id': warehouseId,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'page': page,
-                'page_size': pageSize,
+                'carrier_id': params.carrierId,
+                'warehouse_id': params.warehouseId,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'page': params.page,
+                'page_size': params.pageSize,
             },
             errors: {
                 400: `The request contained errors.`,

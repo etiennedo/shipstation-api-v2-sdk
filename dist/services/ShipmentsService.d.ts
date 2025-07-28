@@ -39,7 +39,27 @@ export declare class ShipmentsService {
      * @returns list_shipments_response_body The request was a success.
      * @throws ApiError
      */
-    static listShipments(pickupId: pickup_resource_id, shipmentStatus?: shipment_status, batchId?: se_id, createdAtStart?: string, createdAtEnd?: string, modifiedAtStart?: string, modifiedAtEnd?: string, page?: number, pageSize?: number, salesOrderId?: string, sortDir?: sort_dir, shipmentNumber?: string, shipToName?: string, itemKeyword?: string, paymentDateStart?: string, paymentDateEnd?: string, storeId?: se_id, externalShipmentId?: string, sortBy?: shipments_sort_by): CancelablePromise<list_shipments_response_body>;
+    static listShipments(params: {
+        pickupId?: pickup_resource_id;
+        shipmentStatus?: shipment_status;
+        batchId?: se_id;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        modifiedAtStart?: string;
+        modifiedAtEnd?: string;
+        page?: number;
+        pageSize?: number;
+        salesOrderId?: string;
+        sortDir?: sort_dir;
+        shipmentNumber?: string;
+        shipToName?: string;
+        itemKeyword?: string;
+        paymentDateStart?: string;
+        paymentDateEnd?: string;
+        storeId?: se_id;
+        externalShipmentId?: string;
+        sortBy?: shipments_sort_by;
+    }): CancelablePromise<list_shipments_response_body>;
     /**
      * Create shipments
      * Create one or more shipments

@@ -21,7 +21,14 @@ export declare class PackagePickupsService {
      * @returns any The request was a success.
      * @throws ApiError
      */
-    static listScheduledPickups(carrierId?: se_id, warehouseId?: se_id, createdAtStart?: string, createdAtEnd?: string, page?: number, pageSize?: number): CancelablePromise<(list_pickup_response_body & error_response_body)>;
+    static listScheduledPickups(params?: {
+        carrierId?: se_id;
+        warehouseId?: se_id;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        page?: number;
+        pageSize?: number;
+    }): CancelablePromise<(list_pickup_response_body & error_response_body)>;
     /**
      * Schedule a pickup
      * Schedule a package pickup with a carrier

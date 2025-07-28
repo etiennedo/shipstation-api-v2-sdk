@@ -42,7 +42,22 @@ export declare class LabelsService {
      *
      * @throws ApiError
      */
-    static listLabels(labelStatus?: label_status, serviceCode?: service_code, carrierId?: se_id, trackingNumber?: string, batchId?: se_id, rateId?: se_id, shipmentId?: se_id, warehouseId?: se_id, createdAtStart?: string, createdAtEnd?: string, page?: number, pageSize?: number, sortDir?: sort_dir, sortBy?: 'modified_at' | 'created_at'): CancelablePromise<list_labels_response_body>;
+    static listLabels(params: {
+        labelStatus?: label_status;
+        serviceCode?: service_code;
+        carrierId?: se_id;
+        trackingNumber?: string;
+        batchId?: se_id;
+        rateId?: se_id;
+        shipmentId?: se_id;
+        warehouseId?: se_id;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        page?: number;
+        pageSize?: number;
+        sortDir?: sort_dir;
+        sortBy?: 'modified_at' | 'created_at';
+    }): CancelablePromise<list_labels_response_body>;
     /**
      * Purchase label
      * Purchase and print a label for shipment.

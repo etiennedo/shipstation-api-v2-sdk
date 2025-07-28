@@ -10,7 +10,13 @@ export declare class InventoryService {
      * @returns any Inventory levels for SKUs
      * @throws ApiError
      */
-    static getInventoryLevels(sku?: string, inventoryWarehouseId?: string, inventoryLocationId?: string, groupBy?: 'warehouse' | 'location', limit?: number): CancelablePromise<{
+    static getInventoryLevels(params: {
+        sku?: string;
+        inventoryWarehouseId?: string;
+        inventoryLocationId?: string;
+        groupBy?: 'warehouse' | 'location';
+        limit?: number;
+    }): CancelablePromise<{
         inventory?: Array<{
             sku?: string;
             on_hand?: number;

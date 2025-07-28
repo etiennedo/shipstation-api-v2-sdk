@@ -10,7 +10,13 @@ export declare class ProductsService {
      * @returns any List of products
      * @throws ApiError
      */
-    static listProducts(sku?: string, name?: string, active?: boolean, pageSize?: number, page?: number): CancelablePromise<{
+    static listProducts(params: {
+        sku?: string;
+        name?: string;
+        active?: boolean;
+        pageSize?: number;
+        page?: number;
+    }): CancelablePromise<{
         products?: Array<{
             /**
              * Unique identifier for the product

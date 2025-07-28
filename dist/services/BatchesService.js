@@ -17,17 +17,17 @@ class BatchesService {
      * @returns ListBatchesResponseBody The request was a success.
      * @throws ApiError
      */
-    static listBatches(status, page = 1, pageSize = 25, sortDir, batchNumber, sortBy) {
+    static listBatches(params) {
         return (0, request_1.request)(OpenAPI_1.OpenAPI, {
             method: 'GET',
             url: '/v2/batches',
             query: {
-                'status': status,
-                'page': page,
-                'page_size': pageSize,
-                'sort_dir': sortDir,
-                'batch_number': batchNumber,
-                'sort_by': sortBy,
+                'status': params.status,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'sort_dir': params.sortDir,
+                'batch_number': params.batchNumber,
+                'sort_by': params.sortBy,
             },
             errors: {
                 404: `The specified resource does not exist.`,

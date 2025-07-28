@@ -14,16 +14,16 @@ class InventoryService {
      * @returns any Inventory levels for SKUs
      * @throws ApiError
      */
-    static getInventoryLevels(sku, inventoryWarehouseId, inventoryLocationId, groupBy, limit) {
+    static getInventoryLevels(params) {
         return (0, request_1.request)(OpenAPI_1.OpenAPI, {
             method: 'GET',
             url: '/v2/inventory',
             query: {
-                'sku': sku,
-                'inventory_warehouse_id': inventoryWarehouseId,
-                'inventory_location_id': inventoryLocationId,
-                'group_by': groupBy,
-                'limit': limit,
+                'sku': params.sku,
+                'inventory_warehouse_id': params.inventoryWarehouseId,
+                'inventory_location_id': params.inventoryLocationId,
+                'group_by': params.groupBy,
+                'limit': params.limit,
             },
         });
     }

@@ -20,20 +20,20 @@ class ManifestsService {
      * @returns list_manifests_response_body The request was a success.
      * @throws ApiError
      */
-    static listManifests(warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page = 1, pageSize = 25, labelIds) {
+    static listManifests(params) {
         return (0, request_1.request)(OpenAPI_1.OpenAPI, {
             method: 'GET',
             url: '/v2/manifests',
             query: {
-                'warehouse_id': warehouseId,
-                'ship_date_start': shipDateStart,
-                'ship_date_end': shipDateEnd,
-                'created_at_start': createdAtStart,
-                'created_at_end': createdAtEnd,
-                'carrier_id': carrierId,
-                'page': page,
-                'page_size': pageSize,
-                'label_ids': labelIds,
+                'warehouse_id': params.warehouseId,
+                'ship_date_start': params.shipDateStart,
+                'ship_date_end': params.shipDateEnd,
+                'created_at_start': params.createdAtStart,
+                'created_at_end': params.createdAtEnd,
+                'carrier_id': params.carrierId,
+                'page': params.page,
+                'page_size': params.pageSize,
+                'label_ids': params.labelIds,
             },
             errors: {
                 400: `The request contained errors.`,

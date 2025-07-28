@@ -26,7 +26,14 @@ export declare class BatchesService {
      * @returns ListBatchesResponseBody The request was a success.
      * @throws ApiError
      */
-    static listBatches(status?: batch_status, page?: number, pageSize?: number, sortDir?: sort_dir, batchNumber?: string, sortBy?: batches_sort_by): CancelablePromise<ListBatchesResponseBody>;
+    static listBatches(params: {
+        status?: batch_status;
+        page?: number;
+        pageSize?: number;
+        sortDir?: sort_dir;
+        batchNumber?: string;
+        sortBy?: batches_sort_by;
+    }): CancelablePromise<ListBatchesResponseBody>;
     /**
      * Create a batch
      * Create a batch containing multiple labels.

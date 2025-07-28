@@ -14,16 +14,16 @@ class ProductsService {
      * @returns any List of products
      * @throws ApiError
      */
-    static listProducts(sku, name, active, pageSize = 100, page = 1) {
+    static listProducts(params) {
         return (0, request_1.request)(OpenAPI_1.OpenAPI, {
             method: 'GET',
             url: '/v2/products',
             query: {
-                'sku': sku,
-                'name': name,
-                'active': active,
-                'page_size': pageSize,
-                'page': page,
+                'sku': params.sku,
+                'name': params.name,
+                'active': params.active,
+                'page_size': params.pageSize,
+                'page': params.page,
             },
             errors: {
                 400: `The request contained errors.`,

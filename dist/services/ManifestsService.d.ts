@@ -22,7 +22,17 @@ export declare class ManifestsService {
      * @returns list_manifests_response_body The request was a success.
      * @throws ApiError
      */
-    static listManifests(warehouseId?: se_id, shipDateStart?: string, shipDateEnd?: string, createdAtStart?: string, createdAtEnd?: string, carrierId?: se_id, page?: number, pageSize?: number, labelIds?: Array<se_id>): CancelablePromise<list_manifests_response_body>;
+    static listManifests(params: {
+        warehouseId?: se_id;
+        shipDateStart?: string;
+        shipDateEnd?: string;
+        createdAtStart?: string;
+        createdAtEnd?: string;
+        carrierId?: se_id;
+        page?: number;
+        pageSize?: number;
+        labelIds?: Array<se_id>;
+    }): CancelablePromise<list_manifests_response_body>;
     /**
      * Create manifest
      * Each ShipStation manifest is created for a specific warehouse, so you'll need to provide the warehouse_id
